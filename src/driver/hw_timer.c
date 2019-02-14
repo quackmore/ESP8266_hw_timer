@@ -84,7 +84,7 @@ static void hw_timer_nmi_cb(void)
                         1,  autoload mode,
 * Returns      : NONE
 *******************************************************************************/
-void ICACHE_FLASH_ATTR hw_timer_init(FRC1_TIMER_SOURCE_TYPE source_type, u8 req)
+void hw_timer_init(FRC1_TIMER_SOURCE_TYPE source_type, u8 req)
 {
     if (req == 1)
         RTC_REG_WRITE(FRC1_CTRL_ADDRESS, FRC1_AUTO_LOAD | DIVDED_BY_16 | FRC1_ENABLE_TIMER | TM_EDGE_INT);
@@ -100,7 +100,7 @@ void ICACHE_FLASH_ATTR hw_timer_init(FRC1_TIMER_SOURCE_TYPE source_type, u8 req)
     ETS_FRC1_INTR_ENABLE();
 }
 
-void ICACHE_FLASH_ATTR hw_timer_disarm(void)
+void hw_timer_disarm(void)
 {
     RTC_REG_WRITE(FRC1_CTRL_ADDRESS, DIVDED_BY_16 | FRC1_DISABLE_TIMER | TM_EDGE_INT);
     TM1_EDGE_INT_DISABLE();
